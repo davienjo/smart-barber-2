@@ -13,14 +13,14 @@ Smart Barbershop is a responsive web application built using HTML, CSS, and Java
 - Booking system interface for scheduling appointments  
 - Services section with prices and descriptions  
 - Customer management dashboard  
-- Interactive navigation and smooth scrolling  
+- Interactive navigation and smooth scrolling  g
 - Clean, modern layout with attention to UI/UX  
 
 ## Live Demo
 [View Live Demo](https://davienjo.github.io/smart-barber-2/)
 
 ## Screenshots
-![Homepage Screenshot](homepage.png)  
+![Homepage Screenshot](home-img.png)  
 ![Booking Section Screenshot](booking.png)  
 ![Mobile View Screenshot](mobile.png)  
 
