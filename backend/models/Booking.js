@@ -7,6 +7,6 @@ const bookingSchema = new mongoose.Schema({
   time:String,
   date:String,
   service:String,
-  barber:String
+  barber:String,
 });
 module.exports = mongoose.model("Booking", bookingSchema);

@@ -1,17 +1,27 @@
 const express = require("express");
 const cors = require("cors");
+const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const Booking = require("./models/Booking");
+const bcrypt = require("bcryptjs");
+const Admin = require("./models/Admin");
+const jwt = require("jsonwebtoken");
 
-mongoose
-  .connect("mongodb://127.0.0.1:27017/barbershop")
-  .then(() => console.log("mongodb connected"))
-  .catch((err) => console.log(err));
+// Load env
+dotenv.config();
 
+// Create app FIRST
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
+
+// Connect DB
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB Atlas connected 🚀"))
+  .catch((err) => console.log(err));
 
 // HOME ROUTE
 app.get("/", (req, res) => {
@@ -21,9 +31,11 @@ app.get("/", (req, res) => {
 // BOOKINGS ROUTE/Express receives data
 app.post("/bookings", async (req, res) => {
   try {
-    // turn data into a structured object
-    const newBooking = new Booking(req.body);
-    // save to mongodb
+    const newBooking = new Booking({
+      ...req.body,
+      date: new Date(req.body.date).toISOString().split("T")[0],
+    });
+
     await newBooking.save();
 
     res.json({
@@ -32,14 +44,8 @@ app.post("/bookings", async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-
     res.status(500).json({ message: "Something went wrong" });
   }
-});
-
-// START SERVER
-app.listen(5000, () => {
-  console.log("server running on port 5000");
 });
 
 // GET all readings/bookings
@@ -47,6 +53,28 @@ app.listen(5000, () => {
 app.get("/bookings", async (req, res) => {
   const bookings = await Booking.find();
   res.json(bookings);
+});
+
+// // stats
+
+app.get("/bookings/stats", async (req, res) => {
+  try {
+    const bookings = await Booking.find();
+
+    const totalBookings = bookings.length;
+
+    const today = new Date().toISOString().split("T")[0];
+
+    const todayBookings = bookings.filter((b) => b.date === today).length;
+
+    res.json({
+      totalBookings,
+      todayBookings,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Error fetching stats" });
+  }
 });
 
 // get one booking
@@ -86,7 +114,7 @@ app.put("/bookings/:id", async (req, res) => {
     const updateBooking = await Booking.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true },
+      { returnDocument: "after" },
     );
 
     if (!updateBooking) {
@@ -94,6 +122,62 @@ app.put("/bookings/:id", async (req, res) => {
     }
     res.json(updateBooking);
   } catch (error) {
-    res.status(500).json({ message: "error deleting booking" });
+    res.status(500).json({ message: "error updating booking" });
   }
+});
+
+// ==========CREATE ADMIN/LOGIN ROUTE===========
+app.post("/api/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const admin = await Admin.findOne({ email });
+
+    if (!admin) {
+      return res.status(400).json({ message: "email not found" });
+    }
+
+    const isMatch = await bcrypt.compare(password, admin.password);
+
+    if (!isMatch) {
+      return res.status(400).json({ message: "Wrong password" });
+    }
+
+    const token = jwt.sign({ id: admin._id }, "secretkey", { expiresIn: "1d" });
+
+    res.json({ token });
+  } catch (err) {
+    console.log("LOGIN ERROR:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+// chart-bookings per day
+
+app.get("/bookings/per-day", async (req, res) => {
+  try {
+    const bookings = await Booking.find();
+
+    const counts = {};
+
+    bookings.forEach((b) => {
+      const date = b.date;
+
+      if (!counts[date]) {
+        counts[date] = 0;
+      }
+
+      counts[date]++;
+    });
+
+    res.json(counts);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Error generating chart data" });
+  }
+});
+
+// START SERVER
+app.listen(5000, () => {
+  console.log("server running on port 5000");
 });
