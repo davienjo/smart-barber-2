@@ -1,4 +1,3 @@
-
 💈 Smart Barbershop Booking System
 
 A full-stack barbershop appointment booking and admin management system built with Node.js, Express, MongoDB, and vanilla JavaScript.
@@ -7,62 +6,41 @@ This project demonstrates real-world full-stack development including authentica
 
 🌐 Live Demo
 🖥️ Frontend (Customer App)
+
 https://smart-barber-web-app.netlify.app
+
 🔐 Admin Login
+
 https://smart-barber-web-app.netlify.app/pages/login.html
+
 📊 Admin Dashboard
+
 https://smart-barber-web-app.netlify.app/pages/admin.html
+
 ⚙️ Backend API
+
 https://smart-barber-web-app.onrender.com
-📸 Preview
 
-(Add screenshots in /screenshots folder)
-
-
-
-## 📸 Screenshots
-
-<p align="center">
-  <strong>Home Page</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <strong>Booking Form</strong>
-</p>
-<p align="center">
-  <img src="screenshots/home.png" width="45%" />
-  <img src="screenshots/booking.png" width="45%" />
-</p>
-
-<p align="center">
-  <strong>Login Page</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <strong>Admin Dashboard</strong>
-</p>
-<p align="center">
-  <img src="screenshots/login.png" width="45%" />
-  <img src="screenshots/admin.png" width="45%" />
-</p>
-
+📸 Screenshots
+<p align="center"> <strong>Home Page</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Booking Form</strong> </p> <p align="center"> <img src="screenshots/home.png" width="45%" /> <img src="screenshots/booking.png" width="45%" /> </p> <p align="center"> <strong>Login Page</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Admin Dashboard</strong> </p> <p align="center"> <img src="screenshots/login.png" width="45%" /> <img src="screenshots/admin.png" width="45%" /> </p>
 ✨ Features
-
 👤 Customer Side
 Book barber appointments online
 Select service, barber, date, and time
 Instant booking confirmation
 Clean and responsive UI
-
 🔐 Admin Side
 Secure login system (JWT authentication)
 View all bookings
 Edit and delete appointments
 Real-time booking management
 Protected dashboard (localStorage + token flow)
-
 ⚙️ Backend
 RESTful API built with Express.js
 MongoDB Atlas integration
 Full CRUD operations
 Authentication using bcrypt & JWT
 Environment variables for security
-
-
 🧠 System Architecture
 User (Browser)
    ↓
@@ -73,8 +51,6 @@ Render Backend (Node.js API)
 MongoDB Atlas Database
    ↓
 Response → UI updates
-
-
 🛠️ Tech Stack
 Frontend
 HTML5
@@ -107,23 +83,16 @@ smart-barber-web-app/
 │   └── .env
 │
 └── README.md
-
 ⚙️ Installation & Setup
-1. Clone repository
+Clone repository
 git clone https://github.com/davienjo/smart-barber-web-app.git
-
-2. Install backend dependencies
+Install backend dependencies
 cd backend
 npm install
-
-3. Create .env file
-MONGO_URI=mongodb://admin:footwear@ac-y6snq5w-shard-00-00.senypos.mongodb.net:27017,ac-y6snq5w-shard-00-01.senypos.mongodb.net:27017,ac-y6snq5w-shard-00-02.senypos.mongodb.net:27017/barbershop?ssl=true&replicaSet=atlas-a3e65v-shard-0&authSource=admin&retryWrites=true&w=majority
-
+Create .env file
+MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
-
-
-
-4. Run server
+Run server
 node server.js
 🌐 API Endpoints
 Bookings
@@ -134,20 +103,15 @@ PUT /bookings/:id
 DELETE /bookings/:id
 Auth
 POST /api/login
-
-
 🔐 Demo Admin Credentials
 Email: admin@gmail.com
 Password: 1234
-
-
 📈 Future Improvements
 Analytics dashboard with charts
 Real-time updates (WebSockets)
 Payment integration
 Role-based authentication
 React frontend upgrade
-
 💡 What I Learned
 Full-stack application architecture
 REST API development with Express
@@ -164,4 +128,3 @@ GitHub: https://github.com/davienjo
 ⭐ Support
 
 If you like this project, give it a ⭐ and feel free to explore or fork it!
-
