@@ -1,77 +1,99 @@
-# 💈 Smart Barbershop Booking System
 
-A full-stack barbershop appointment booking and admin management system built with Node.js, Express, MongoDB, and vanilla frontend technologies.
+💈 Smart Barbershop Booking System
 
-This project demonstrates real-world full-stack development skills including authentication, CRUD operations, REST APIs, and database integration.
+A full-stack barbershop appointment booking and admin management system built with Node.js, Express, MongoDB, and vanilla JavaScript.
 
----
+This project demonstrates real-world full-stack development including authentication, REST APIs, CRUD operations, and cloud deployment.
 
-## 🚀 Live Demo
-*(Add link here after deployment)*  
-https://your-live-project-link.com
+🌐 Live Demo
+🖥️ Frontend (Customer App)
+https://smart-barber-web-app.netlify.app
+🔐 Admin Login
+https://smart-barber-web-app.netlify.app/pages/login.html
+📊 Admin Dashboard
+https://smart-barber-web-app.netlify.app/pages/admin.html
+⚙️ Backend API
+https://smart-barber-web-app.onrender.com
+📸 Preview
 
----
+(Add screenshots in /screenshots folder)
+
+
 
 ## 📸 Screenshots
 
-### 🏠 Home Page
-*(Add screenshot here)*
+<p align="center">
+  <strong>Home Page</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <strong>Booking Form</strong>
+</p>
+<p align="center">
+  <img src="screenshots/home.png" width="45%" />
+  <img src="screenshots/booking.png" width="45%" />
+</p>
 
-### 📊 Admin Dashboard
-*(Add screenshot here)*
+<p align="center">
+  <strong>Login Page</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <strong>Admin Dashboard</strong>
+</p>
+<p align="center">
+  <img src="screenshots/login.png" width="45%" />
+  <img src="screenshots/admin.png" width="45%" />
+</p>
 
-### 📅 Booking Form
-*(Add screenshot here)*
+✨ Features
 
----
+👤 Customer Side
+Book barber appointments online
+Select service, barber, date, and time
+Instant booking confirmation
+Clean and responsive UI
 
-## ✨ Features
+🔐 Admin Side
+Secure login system (JWT authentication)
+View all bookings
+Edit and delete appointments
+Real-time booking management
+Protected dashboard (localStorage + token flow)
 
-### 👤 Customer Side
-- Book appointments online
-- Select service, barber, date, and time
-- Instant booking confirmation
-- Clean responsive UI
+⚙️ Backend
+RESTful API built with Express.js
+MongoDB Atlas integration
+Full CRUD operations
+Authentication using bcrypt & JWT
+Environment variables for security
 
-### 🔐 Admin Side
-- Secure login system
-- View all bookings
-- Edit and delete bookings
-- Manage appointments in real-time
-- Protected admin dashboard (localStorage auth)
 
-### ⚙️ Backend
-- RESTful API built with Express
-- MongoDB Atlas database integration
-- CRUD operations for bookings
-- Authentication using bcrypt & JWT
-- Environment variable configuration
+🧠 System Architecture
+User (Browser)
+   ↓
+Netlify Frontend (UI)
+   ↓ fetch()
+Render Backend (Node.js API)
+   ↓
+MongoDB Atlas Database
+   ↓
+Response → UI updates
 
----
 
-## 🛠️ Tech Stack
-
-### Frontend
-- HTML5
-- CSS3
-- JavaScript (Vanilla JS)
-
-### Backend
-- Node.js
-- Express.js
-- MongoDB Atlas
-- Mongoose
-
-### Security
-- bcryptjs (password hashing)
-- JSON Web Tokens (JWT)
-
----
-
-## 📁 Project Structure
-
-```text
-smart-barbershop/
+🛠️ Tech Stack
+Frontend
+HTML5
+CSS3
+JavaScript (Vanilla JS)
+Backend
+Node.js
+Express.js
+MongoDB Atlas
+Mongoose
+Security
+bcryptjs
+JSON Web Tokens (JWT)
+Deployment
+Netlify (Frontend)
+Render (Backend)
+GitHub (Version Control)
+📁 Project Structure
+smart-barber-web-app/
 │
 ├── frontend/
 │   ├── pages/
@@ -80,59 +102,66 @@ smart-barbershop/
 │   └── images/
 │
 ├── backend/
-│   ├── config/
 │   ├── models/
 │   ├── server.js
-│   ├── .env
+│   └── .env
 │
 └── README.md
 
 ⚙️ Installation & Setup
-1. Clone the repository
-git clone https://github.com/yourusername/smart-barbershop.git
+1. Clone repository
+git clone https://github.com/davienjo/smart-barber-web-app.git
 
-2. Backend setup
+2. Install backend dependencies
 cd backend
 npm install
 
 3. Create .env file
-MONGO_URI=your_mongodb_connection_string
+MONGO_URI=mongodb://admin:footwear@ac-y6snq5w-shard-00-00.senypos.mongodb.net:27017,ac-y6snq5w-shard-00-01.senypos.mongodb.net:27017,ac-y6snq5w-shard-00-02.senypos.mongodb.net:27017/barbershop?ssl=true&replicaSet=atlas-a3e65v-shard-0&authSource=admin&retryWrites=true&w=majority
+
+JWT_SECRET=your_secret_key
+
+
 
 4. Run server
 node server.js
-
 🌐 API Endpoints
 Bookings
-POST /bookings → Create booking
-GET /bookings → Get all bookings
-GET /bookings/:id → Get single booking
-PUT /bookings/:id → Update booking
-DELETE /bookings/:id → Delete booking
+POST /bookings
+GET /bookings
+GET /bookings/:id
+PUT /bookings/:id
+DELETE /bookings/:id
 Auth
-POST /api/login → Admin login
+POST /api/login
 
-🔐 Admin Credentials (Demo)
+
+🔐 Demo Admin Credentials
 Email: admin@gmail.com
 Password: 1234
 
 
 📈 Future Improvements
-Add analytics dashboard (booking stats & charts)
-Real-time notifications
+Analytics dashboard with charts
+Real-time updates (WebSockets)
 Payment integration
-Role-based authentication (admin/customer separation)
+Role-based authentication
 React frontend upgrade
 
 💡 What I Learned
-Full-stack CRUD application architecture
+Full-stack application architecture
 REST API development with Express
-MongoDB database design & integration
-Authentication with JWT & bcrypt
+MongoDB database integration
+JWT authentication flow
 Frontend-backend communication
-Project structuring for scalability
+Deployment with Netlify & Render
+Building production-style projects
 👨‍💻 Author
 
 David Thairu
-Frontend & Backend Developer
-GitHub: https://github.com/yourusername
+
+GitHub: https://github.com/davienjo
+⭐ Support
+
+If you like this project, give it a ⭐ and feel free to explore or fork it!
 
