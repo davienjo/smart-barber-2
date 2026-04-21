@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin-dashboard</title>
+    <link rel="stylesheet" href="../css/admin.css" />
+    <link rel="stylesheet" href="../css/media-queries.css" />
+
+    <!-- Protect the dashboard -->
+
+   <script>
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    window.location.href = "./login.html";
+  }
+</script>
+
+  </head>
+  <body>
+
+  <div class="admin-header">
+ <h1 class="admin-h1">Admin Dashboard</h1>
+
+    <!-- logout button -->
+    <button onclick="logout()" class="log-btn">Logout</button>
+</div>
+
+<!-- stats -->
+   
+<div class="stats">
+
+  <div id="totalBookings" class="stat-card">Total Bookings:</div>
+  <div id="todayBookings" class="stat-card">Today:</div>
+  
+</div>
+
+<!-- chart  -->
+<div class="chart-container">
+  <canvas id="bookingChart"></canvas>
+</div>
+
+
+    <!-- Bookings -->
+
+    <div id="bookings-container"></div>
+
+    <!-- Edit-form -->
+
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+
+        <h3>Edit Booking</h3>
+        <input type="text" id="edit-name" placeholder="Name" />
+        <input type="email" id="edit-email" placeholder="Email" />
+        <input type="time" id="edit-time" />
+        <input type="date" id="edit-date" />
+        <input type="text" id="edit-service" placeholder="service" />
+        <input type="text" id="edit-barber" placeholder="Barber" />
+
+        <button onclick="updateBooking()">Update</button>
+      </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+    <script src="../js/admin.js"></script>
+    <script>
+      function logout() {
+        localStorage.removeItem("isLoggedIn");
+        window.location.href = "login.html";
+      }
+    </script>
+  </body>
+</html>
